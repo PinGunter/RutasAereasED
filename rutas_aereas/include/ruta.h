@@ -3,8 +3,8 @@
   * @brief Fichero cabecera para la clase Ruta
   */
 
-#ifndef _PUNTO_H_
-#define _PUNTO_H_
+#ifndef _RUTA_H_
+#define _RUTA_H_
 
 class Ruta{
 

@@ -5,7 +5,7 @@
   */
 
 #include <iostream>
-#include "Punto.h"
+#include "punto.h"
 
 using namespace std;
 
@@ -19,7 +19,7 @@ double Punto::getY() const{
 	return y;
 }
 
-double Punto::distancia(const POint &p) const{
+double Punto::distancia(const Point &p) const{
 	int distancia = y-x;
 	return distancia;
 }

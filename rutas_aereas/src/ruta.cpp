@@ -5,7 +5,7 @@
   */
   
 #include <iostream>
-#include "Ruta.h"
+#include "ruta.h"
 
 using namespace std;
 
