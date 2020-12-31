@@ -15,9 +15,15 @@
 class Ruta{
 
 private:
-
+	std::string nombre;
 	std::vector<Punto> ruta;
 
+	/**
+	 * @brief metodo para localizar un punto
+	 * @param punto el que se busca
+	 * @return un iterador apuntando al elemento. End si no lo encuentra
+	 */
+	std::vector<Punto>::iterator buscarPunto(Punto punto);
 public:
 
 	/**
@@ -43,6 +49,29 @@ public:
 	 */
 	Ruta & operator=(const Ruta & r) = default;
 
+	/**
+	 * @brief metodo para obtener el nombre de una ruta
+	 * @return el nombre de la ruta
+	 */
+	std::string getNombre() const;
+
+	/**
+	 * @brief metodo para obtener el número de puntos en la ruta
+	 * @return entero con el numero de puntos
+	 */
+	int getNumPuntos() const;
+
+	/**
+	 * @brief metodo para insertar puntos en la ruta
+	 * @param punto el nuevo punto de la ruta
+	 */
+	void insertarPunto(Punto punto);
+
+	/**
+	 * @brief metodo para eliminar un punto de la ruta
+	 * @param punto el que se borra
+	 */
+	void eliminarPunto(Punto punto);
 	/**
 	 * @brief clase iteradora para la clase Ruta
 	 **/
@@ -89,9 +118,9 @@ public:
 
 		/**
 		 * @brief operador de incremento (prefijo)
-		 * @return una referencia al objeto
+		 * @return una copia del objeto
 		 */
-		iterator & operator++();
+		iterator operator++();
 
 		/**
 		 * @brief operador de incremento (posfijo)
@@ -103,7 +132,7 @@ public:
 		 * @brief operador de decremento (prefijo)
 		 * @return una referencia al objeto
 		 */
-		iterator & operator--();
+		iterator operator--();
 
 		/**
 		 * @brief operador de decremento (posfijo)
@@ -160,9 +189,9 @@ public:
 
 		/**
 		 * @brief operador de incremento (prefijo)
-		 * @return una referencia al objeto
+		 * @return una copia del objeto
 		 */
-		const_iterator & operator++();
+		const_iterator operator++();
 
 		/**
 		 * @brief operador de incremento (posfijo)
@@ -174,7 +203,7 @@ public:
 		 * @brief operador de decremento (prefijo)
 		 * @return una referencia al objeto
 		 */
-		const_iterator & operator--();
+		const_iterator operator--();
 
 		/**
 		 * @brief operador de decremento (posfijo)
@@ -201,13 +230,13 @@ public:
 	 * @brief metodo cbegin
 	 * @return un interador constante que apunta al comienzo de la ruta
 	 */
-	const_iterator cbegin();
+	const_iterator cbegin() const;
 
 	/**
 	 * @brief metodo cend
 	 * @return un iterador constante que apunta al final de la ruta
 	 */
-	const_iterator cend();
+	const_iterator cend() const;
 
 	friend std::istream & operator>>(std::istream & is, Ruta & r);
 	friend std::ostream & operator<<(std::ostream & os, const Ruta & r);
