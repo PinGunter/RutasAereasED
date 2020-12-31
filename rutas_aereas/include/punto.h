@@ -1,6 +1,8 @@
 /**
   * @file punto.h
   * @brief Fichero cabecera para la clase Punto
+  * @author Abel Ríos González
+  * @author Salvador Romero Cortés
   */
 
 #ifndef _PUNTO_H_
@@ -10,22 +12,32 @@ class Punto{
 
 private:
 
-	double x;
-	double y;
+	double x;	///< Coordenada x del punto
+	double y;	///< Coordenada y del punto
 	
 public:
 
-	Point();
-	
-	virtual ~Punto();
-	
-	Point(const double x, const double y);
+	/**
+	 * @brief Constructor
+	 */
+	Punto(): x(0), y(0){}
 
-	double getX();
+	/**
+	 * @brief Constructor con parametros
+	 * @param x Coordenada x del punto
+	 * @param y Coordenada y del punto
+	 */
+	Punto(double x, double y) : x(x), y(y){}
+
+	/**
+	 * @brief Consultor de la coordenada x del Punto
+	 */
+	inline double getLongitud() const {return x;};
 	
-	double getY();
-	
-	double distancia(const Point &p) const;	
+	/**
+	 * @brief Consultor de la coordenada y del Punto
+	 */
+	inline double getLatitud() const {return y;};
 
 };
 

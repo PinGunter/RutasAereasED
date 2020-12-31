@@ -6,3 +6,6 @@
 
 #include <iostream>
 #include "ruta.h"
+
+
+

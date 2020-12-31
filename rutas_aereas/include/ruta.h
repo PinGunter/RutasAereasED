@@ -5,29 +5,45 @@
 
 #ifndef _RUTA_H_
 #define _RUTA_H_
+#include "punto.h"
+#include <vector>
 
 class Ruta{
 
 private:
 
-	Punto * ruta;
-	//int tam;
-	//int util;
-	
-	void allocate(int n);
-	void deallocate();
-	void copy(const Ruta &r);
+	std::vector<Punto> ruta;
 
 public:
 
-	Ruta();
+	Ruta() = default;
 	
-	~Ruta();
+	~Ruta() = default;
 	
-	Ruta(const Ruta& r);
+	Ruta(const Ruta & r) = default;
 	
-	Ruta & operator=(const Ruta& r);
-	
-	Punto & getPunto(int i);
+	//Ruta & operator=(const Ruta & r){
+	//	ruta = r.ruta;
+	//	return *this;
+	//}
 
+	Ruta & operator=(const Ruta & r) = default;
+
+	class iretator{
+
+	private:
+
+	
+
+
+	public:
+
+	};
+	<< >>
+	iterator::operator!=
+	iterator::operator*
+	iterator::operator++
+	begin end 	
 };
+
+#endif /* RUTA_H_ */ 
