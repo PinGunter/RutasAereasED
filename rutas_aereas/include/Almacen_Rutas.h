@@ -39,7 +39,7 @@ public:
 
 	private:
 
-		std::vector<Punto>::iterator it;
+		std::vector<Ruta>::iterator it;
 
 		/**
 		 * @brief constructor de iterador de ruta a partir de un iterador de vector
@@ -115,7 +115,7 @@ public:
 
 	private:
 
-		std::vector<Punto>::const_iterator it;
+		std::vector<Ruta>::const_iterator it;
 		/**
 		 * @brief constructor de iterador de ruta a partir de un iterador de vector
 		 * @param vit iterador de vector
@@ -207,23 +207,23 @@ public:
 	 */
 	const_iterator cend() const;
 
-	friend std::istream & operator>>(std::istream & is, Ruta & r);
-	friend std::ostream & operator<<(std::ostream & os, const Ruta & r);
+	friend std::istream & operator>>(std::istream & is, Almacen_Rutas & r);
+	friend std::ostream & operator<<(std::ostream & os, const Almacen_Rutas & r);
 };
 
 /**
  * @brief operador de entrada de datos
  * @param is el flujo de donde se leen los datos
- * @param r el objeto ruta que guarda los datos leidos
+ * @param r el objeto almacen ruta que guarda los datos leidos
  * @return referencia a istream
  */
-std::istream & operator>>(std::istream & is, Ruta & r);
+std::istream & operator>>(std::istream & is, Almacen_Rutas & r);
 /**
  * @brief operador de salida de datos
  * @param os el flujo hacia donde se transfieren los datos
- * @param r el objeto ruta que se saca por el flujo
+ * @param r el objeto almacen ruta que se saca por el flujo
  * @return referencia a ostream
  */
-std::ostream & operator<<(std::ostream & os, const Ruta & r);
+std::ostream & operator<<(std::ostream & os, const Almacen_Rutas & r);
 
 #endif /* Almacen_Rutas_H_ */ 

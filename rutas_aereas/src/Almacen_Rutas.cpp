@@ -86,7 +86,7 @@ bool Almacen_Rutas::const_iterator::operator!=(const Almacen_Rutas::const_iterat
     return it != otro.it;
 }
 
-Ruta & Almacen_Rutas::iterator::operator*(){
+Ruta Almacen_Rutas::const_iterator::operator*(){
     return (*it);
 }
 
