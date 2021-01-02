@@ -1,98 +1,54 @@
 /**
-  * @file ruta.h
-  * @brief Fichero cabecera para la clase Ruta
+  * @file Almacen_Rutas.h
+  * @brief Fichero cabecera para la clase Almacen_Rutas
   */
 
-#ifndef _RUTA_H_
-#define _RUTA_H_
-#include "punto.h"
+#ifndef _Almacen_Rutas_H_
+#define _Almacen_Rutas_H_
+#include "ruta.h"
 #include <vector>
 #include <iostream>
 
-/**
- * @brief Clase Ruta que representa una ruta que es una sucesión de puntos
- */
-class Ruta{
+class Almacen_Rutas{
 
 private:
-	std::string nombre;
-	std::vector<Punto> ruta;
+	
+	std::vector<Ruta> almacen;
+	std::vector<Ruta>::iterator buscarRuta(std::string nombre_ruta);
 
-	/**
-	 * @brief metodo para localizar un punto
-	 * @param punto el que se busca
-	 * @return un iterador apuntando al elemento. End si no lo encuentra
-	 */
-	std::vector<Punto>::iterator buscarPunto(const Punto & punto);
 public:
 
-	/**
-	 * @brief constructor por defecto
-	 */
-	Ruta() = default;
+	Almacen_Rutas() = default;
 	
-	/**
-	 * @brief destructor
-	 */
-	~Ruta() = default;
-	
-	/**
-	 * @brief constructor de copia
-	 * @param r el que se copia
-	 */
-	Ruta(const Ruta & r) = default;
-	
-	/**
-	 * @brief operador de asignación
-	 * @param r el objeto que se asigna a @e this
-	 * @return referencia al objeto
-	 */
-	Ruta & operator=(const Ruta & r) = default;
+	~Almacen_Rutas() = default;
+
+	Almacen_Rutas(const Almacen_Rutas & a) = default;
+
+	Almacen_Rutas & operator=(const Almacen_Rutas & a) = default;
+
+	int getNumRutas() const;
+
+	void insertarRuta(const Ruta & ruta);
+
+	void eliminarRuta(std::string nombre_ruta);
 
 	/**
-	 * @brief metodo para obtener el nombre de una ruta
-	 * @return el nombre de la ruta
-	 */
-	std::string getNombre() const;
-
-	/**
-	 * @brief metodo para obtener el número de puntos en la ruta
-	 * @return entero con el numero de puntos
-	 */
-	int getNumPuntos() const;
-
-	/**
-	 * @brief metodo para insertar puntos en la ruta
-	 * @param punto el nuevo punto de la ruta
-	 */
-	void insertarPunto(Punto punto);
-
-	/**
-	 * @brief metodo para eliminar un punto de la ruta
-	 * @param punto el que se borra
-	 */
-	void eliminarPunto(Punto punto);
-	
-	/**
-	 * @brief operador de igualdad con respecto a un nombre de ruta
-	 * @param nombre_ruta el nombre de ruta con el que se compara
-	 * @return true si el nombre de la ruta es igual a nombre_ruta
-	 * 		   false en caso contrario
-	 */
-	bool operator==(const std::string nombre_ruta);
-
-	/**
-	 * @brief clase iteradora para la clase Ruta
+	 * @brief clase iteradora para la clase Almacen_Rutas
 	 **/
-	class iterator{	
+	class iterator{
+
 	private:
+
 		std::vector<Punto>::iterator it;
+
 		/**
 		 * @brief constructor de iterador de ruta a partir de un iterador de vector
 		 * @param vit iterador de vector
 		 */
 		iterator(const std::vector<Punto>::iterator & vit);
+
 	public:
+
 		/**
 		 * @brief constructor por defecto de iterador
 		 */
@@ -123,7 +79,7 @@ public:
 		 * @brief operador * 
 		 * @return el Punto donde apunta el iterador
 		 */
-		Punto & operator*();
+		Ruta & operator*();
 
 		/**
 		 * @brief operador de incremento (prefijo)
@@ -149,21 +105,25 @@ public:
 		 */
 		iterator operator--(int);
 
-		friend class Ruta;
+		friend class Almacen_Rutas;
 	};
-	
+
 	/**
 	 * @brief clase iteradora constante para la clase Ruta
 	 **/
-	class const_iterator{	
+	class const_iterator{
+
 	private:
+
 		std::vector<Punto>::const_iterator it;
 		/**
 		 * @brief constructor de iterador de ruta a partir de un iterador de vector
 		 * @param vit iterador de vector
 		 */
 		const_iterator(const std::vector<Punto>::const_iterator & vit);
+
 	public:
+
 		/**
 		 * @brief constructor por defecto de iterador
 		 */
@@ -194,7 +154,7 @@ public:
 		 * @brief operador * 
 		 * @return el Punto donde apunta el iterador
 		 */
-		Punto operator*();
+		Ruta operator*();
 
 		/**
 		 * @brief operador de incremento (prefijo)
@@ -220,37 +180,37 @@ public:
 		 */
 		const_iterator operator--(int);
 
-		friend class Ruta;
+		friend class Almacen_Rutas;
 	};
 
 	/**
 	 * @brief metodo begin
-	 * @return un interador que apunta al comienzo de la ruta
+	 * @return un interador que apunta al comienzo del almacen de Rutas
 	 */
 	iterator begin();
 
 	/**
 	 * @brief metodo end
-	 * @return un iterador que apunta al final de la ruta
+	 * @return un iterador que apunta al final del almacen de Rutas
 	 */
 	iterator end();
 	
 	/**
 	 * @brief metodo cbegin
-	 * @return un interador constante que apunta al comienzo de la ruta
-	 */
+	 * @return un interador constante que apunta al comienzo del almacen de Rutas
+	 **/
 	const_iterator cbegin() const;
 
 	/**
 	 * @brief metodo cend
-	 * @return un iterador constante que apunta al final de la ruta
+	 * @return un iterador constante que apunta al final del almacen de Rutas
 	 */
 	const_iterator cend() const;
 
 	friend std::istream & operator>>(std::istream & is, Ruta & r);
 	friend std::ostream & operator<<(std::ostream & os, const Ruta & r);
 };
- 
+
 /**
  * @brief operador de entrada de datos
  * @param is el flujo de donde se leen los datos
@@ -266,5 +226,4 @@ std::istream & operator>>(std::istream & is, Ruta & r);
  */
 std::ostream & operator<<(std::ostream & os, const Ruta & r);
 
-#endif /* RUTA_H_ */ 
-
+#endif /* Almacen_Rutas_H_ */ 

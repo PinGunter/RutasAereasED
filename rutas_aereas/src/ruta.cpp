@@ -8,7 +8,7 @@
 #include <ruta.h>
 using namespace std;
 
-vector<Punto>::iterator Ruta::buscarPunto(Punto punto){
+vector<Punto>::iterator Ruta::buscarPunto(const Punto & punto){
     vector<Punto>::iterator posicion;
     bool encontrado = false;
     for (posicion = ruta.begin(); posicion != ruta.end() && !encontrado ; ++posicion){
@@ -16,14 +16,12 @@ vector<Punto>::iterator Ruta::buscarPunto(Punto punto){
             encontrado = true;
         }
     }
-
     if (!encontrado){
         posicion = ruta.end();
     }
 
     return posicion;
 }
-
 
 string Ruta::getNombre() const {
     return nombre;
@@ -44,6 +42,11 @@ void Ruta::eliminarPunto(Punto punto){
         ruta.erase(posicion);
     }
 }
+
+bool Ruta::operator==(const std::string nombre_ruta){
+    return this->nombre == nombre_ruta;
+}
+
 
 Ruta::iterator::iterator(const vector<Punto>::iterator & vit){
     it = vit;
