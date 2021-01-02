@@ -7,6 +7,7 @@
 
 #ifndef _PUNTO_H_
 #define _PUNTO_H_
+#include <iostream>
 
 /**
  * @brief clase Punto, representa una coordenada en 2 dimensiones
@@ -61,7 +62,22 @@ public:
 	 */
 	bool operator==(const Punto & otro) { return x == otro.x && y == otro.y; };
 	
-
+	friend std::ostream & operator<<(std::ostream &os, const Punto &p);
+	friend std::istream & operator>>(std::istream &is, Punto & p);
 };
 
+/**
+ * @brief operador de entrada de datos
+ * @param is el flujo de donde se leen los datos
+ * @param p el objeto punto que guarda los datos leidos
+ * @return referencia a istream
+ */
+std::istream & operator>>(std::istream & is, Punto & p );
+/**
+ * @brief operador de salida de datos
+ * @param os el flujo hacia donde se transfieren los datos
+ * @param p el objeto punto que se saca por el flujo
+ * @return referencia a ostream
+ */
+std::ostream & operator<<(std::ostream & os, const Punto & p);
 #endif /* PUNTO_H_ */ 

@@ -15,8 +15,8 @@
 class Ruta{
 
 private:
-	std::string nombre;
-	std::vector<Punto> ruta;
+	std::string nombre; ///< Nombre de la ruta
+	std::vector<Punto> ruta; ///< Vector de puntos
 
 	/**
 	 * @brief metodo para localizar un punto
@@ -30,6 +30,12 @@ public:
 	 * @brief constructor por defecto
 	 */
 	Ruta() = default;
+	
+	/**
+	 * @brief constructor a partir de un nombre
+	 * @param nombre_ruta el nombre que tendra la ruta creada
+	 */
+	Ruta(std::string nombre_ruta);
 	
 	/**
 	 * @brief destructor
@@ -56,6 +62,12 @@ public:
 	std::string getNombre() const;
 
 	/**
+	 * @brief Método modificador del nombre
+	 * @param nombre el que se le pone a la ruta
+	 */
+	void setNombre(std::string nombre);
+
+	/**
 	 * @brief metodo para obtener el número de puntos en la ruta
 	 * @return entero con el numero de puntos
 	 */
@@ -74,12 +86,20 @@ public:
 	void eliminarPunto(Punto punto);
 	
 	/**
+	 * @brief operador de igualdad entre rutas
+	 * @param otra la ruta con la que se compara
+	 * @return true si las rutas son iguales
+	 * 		   false en caso contrario
+	 */
+	bool operator==(const Ruta & otra);
+
+	/**
 	 * @brief operador de igualdad con respecto a un nombre de ruta
 	 * @param nombre_ruta el nombre de ruta con el que se compara
 	 * @return true si el nombre de la ruta es igual a nombre_ruta
 	 * 		   false en caso contrario
 	 */
-	bool operator==(const std::string nombre_ruta);
+	bool operator==(const std::string & nombre_ruta);
 
 	/**
 	 * @brief clase iteradora para la clase Ruta
@@ -109,7 +129,7 @@ public:
 		 * @param otro el que se asigna
 		 * @return una referencia del iterador actual
 		 */
-		iterator & operator=(const iterator & otro);
+		iterator & operator=(const iterator & otro) = default;
 
 		/**
 		 * @brief operador de desigualdad
@@ -180,7 +200,7 @@ public:
 		 * @param otro el que se asigna
 		 * @return una referencia del iterador actual
 		 */
-		const_iterator & operator=(const const_iterator & otro);
+		const_iterator & operator=(const const_iterator & otro) = default;
 
 		/**
 		 * @brief operador de desigualdad

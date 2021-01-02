@@ -18,8 +18,9 @@ vector<Ruta>::iterator Almacen_Rutas::buscarRuta(string nombre_ruta){
 
     if (!encontrado){
         posicion = almacen.end();
+    } else{
+        --posicion; //porque se incrementa tras encontrar el elemento
     }
-
     return posicion;
 }
 
@@ -38,21 +39,28 @@ void Almacen_Rutas::eliminarRuta(string nombre_ruta){
 	}
 }
 
-Almacen_Rutas::iterator::iterator(const vector<Punto>::iterator & vit){
+bool Almacen_Rutas::operator==(const Almacen_Rutas & otra){
+    bool iguales = getNumRutas() == otra.getNumRutas();
+    for (int i=0; i < getNumRutas() && iguales; i++){
+        if (!(almacen[i] == otra.almacen[i])){
+            iguales = false;
+        }
+    }
+    return iguales;
+} 
+
+Almacen_Rutas::iterator::iterator(const vector<Ruta>::iterator & vit){
     it = vit;
 }
 
 Almacen_Rutas::iterator::iterator(const Almacen_Rutas::iterator & otro): it(otro.it){}
 
-Almacen_Rutas::iterator & Almacen_Rutas::iterator::operator=(const Almacen_Rutas::iterator & otro){
-    it = otro.it;
-}
 
 bool Almacen_Rutas::iterator::operator!=(const Almacen_Rutas::iterator & otro){
     return it != otro.it;
 }
 
-Punto & Almacen_Rutas::iterator::operator*(){
+Ruta & Almacen_Rutas::iterator::operator*(){
     return (*it);
 }
 
@@ -72,15 +80,11 @@ Almacen_Rutas::iterator Almacen_Rutas::iterator::operator--(int){
     return it--;
 }
 
-Almacen_Rutas::const_iterator::const_iterator(const vector<Punto>::const_iterator & vit){
+Almacen_Rutas::const_iterator::const_iterator(const vector<Ruta>::const_iterator & vit){
     it = vit;
 }
 
 Almacen_Rutas::const_iterator::const_iterator(const Almacen_Rutas::const_iterator & otro): it(otro.it){}
-
-Almacen_Rutas::const_iterator & Almacen_Rutas::const_iterator::operator=(const Almacen_Rutas::const_iterator & otro){
-    it = otro.it;
-}
 
 bool Almacen_Rutas::const_iterator::operator!=(const Almacen_Rutas::const_iterator & otro){
     return it != otro.it;
@@ -122,27 +126,28 @@ Almacen_Rutas::const_iterator Almacen_Rutas::cend() const{
     return const_iterator(almacen.cend());
 }
 
-istream & operator>>(istream & is, Almacen_Rutas & a){
+istream & operator>>(istream & is, Almacen_Rutas & almacen){
 	Ruta aux;
 	std::string password;
 	is >> password;
 	if (password != "#Rutas"){
-		// Mensajes de error y finalizar?
+		cerr << "Error: archivo no válido" << endl;
+        exit(1); 
 	}
-
-	while (!is.eof()){ // Devuelve true si ha alcanzado el final del archivo
+	while (is){
 		is >> aux;
-		a.insertarRuta(aux); 
+        if (is){
+            almacen.insertarRuta(aux);
+        }
 	}
 
 	return is;
 }
 
-ostream & operator<<(ostream & os, const Almacen_Rutas & a){
-    // Usar operator << de la clase Ruta
-    os << "#Rutas";
-    for(auto it = a.cbegin(); it != a.cend(); ++it){
-    	os << (*it);
+ostream & operator<<(ostream & os, const Almacen_Rutas & almacen){
+    os << "#Rutas" << endl;
+    for(auto it = almacen.cbegin(); it != almacen.cend(); ++it){
+    	os << (*it) << endl;
     }
     return os;
 }

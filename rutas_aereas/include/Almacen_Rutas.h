@@ -9,29 +9,70 @@
 #include <vector>
 #include <iostream>
 
+/**
+ * @brief clase Almacen_Rutas que representa un conjunto de rutas aereas
+ */
 class Almacen_Rutas{
 
 private:
 	
-	std::vector<Ruta> almacen;
+	std::vector<Ruta> almacen; ///< Vector de rutas
+
+	/**
+	 * @brief Método para buscar una ruta en el almacén
+	 * @param nombre_ruta Nombre de la ruta
+	 */
 	std::vector<Ruta>::iterator buscarRuta(std::string nombre_ruta);
 
 public:
 
+	/**
+	 * @brief constructor por defecto
+	 */
 	Almacen_Rutas() = default;
+
+	/**
+	 * @brief constructor de copia
+	 * @param a el que se copia
+	 */
+	Almacen_Rutas(const Almacen_Rutas & a) = default;
 	
+	/**
+	 * @brief destructor
+	 */
 	~Almacen_Rutas() = default;
 
-	Almacen_Rutas(const Almacen_Rutas & a) = default;
-
+	/**
+	 * @brief operador de asignacion
+	 * @param a el almacen que se asigna
+	 * @return una referencia al objeto this
+	 */
 	Almacen_Rutas & operator=(const Almacen_Rutas & a) = default;
 
+	/**
+	 * @brief Método consultor del número de rutas del almacén.
+	 * @return Número de rutas
+	 */
 	int getNumRutas() const;
 
+	/**
+	 * @brief Método para insertar una ruta en el almacén
+	 * @param ruta Ruta a insertar
+	 */
 	void insertarRuta(const Ruta & ruta);
 
+	/**
+	 * @brief metodo para eliminar una ruta del almacen
+	 * @param nombre_ruta el nombre que identifica a la ruta
+	 */
 	void eliminarRuta(std::string nombre_ruta);
 
+	/**
+	 * @brief Operador de igualdad
+	 * @param otra Almacen de rutas que se compara con el almacen de rutas actual
+	 */
+	bool operator==(const Almacen_Rutas & otra);
+	
 	/**
 	 * @brief clase iteradora para la clase Almacen_Rutas
 	 **/
@@ -45,7 +86,7 @@ public:
 		 * @brief constructor de iterador de ruta a partir de un iterador de vector
 		 * @param vit iterador de vector
 		 */
-		iterator(const std::vector<Punto>::iterator & vit);
+		iterator(const std::vector<Ruta>::iterator & vit);
 
 	public:
 
@@ -65,7 +106,7 @@ public:
 		 * @param otro el que se asigna
 		 * @return una referencia del iterador actual
 		 */
-		iterator & operator=(const iterator & otro);
+		iterator & operator=(const iterator & otro) = default;
 
 		/**
 		 * @brief operador de desigualdad
@@ -120,7 +161,7 @@ public:
 		 * @brief constructor de iterador de ruta a partir de un iterador de vector
 		 * @param vit iterador de vector
 		 */
-		const_iterator(const std::vector<Punto>::const_iterator & vit);
+		const_iterator(const std::vector<Ruta>::const_iterator & vit);
 
 	public:
 
@@ -140,7 +181,7 @@ public:
 		 * @param otro el que se asigna
 		 * @return una referencia del iterador actual
 		 */
-		const_iterator & operator=(const const_iterator & otro);
+		const_iterator & operator=(const const_iterator & otro) = default;
 
 		/**
 		 * @brief operador de desigualdad
@@ -207,23 +248,23 @@ public:
 	 */
 	const_iterator cend() const;
 
-	friend std::istream & operator>>(std::istream & is, Almacen_Rutas & r);
-	friend std::ostream & operator<<(std::ostream & os, const Almacen_Rutas & r);
+	friend std::istream & operator>>(std::istream & is, Almacen_Rutas & almacen);
+	friend std::ostream & operator<<(std::ostream & os, const Almacen_Rutas & almacen);
 };
 
 /**
  * @brief operador de entrada de datos
  * @param is el flujo de donde se leen los datos
- * @param r el objeto almacen ruta que guarda los datos leidos
+ * @param almacen el objeto almacen ruta que guarda los datos leidos
  * @return referencia a istream
  */
-std::istream & operator>>(std::istream & is, Almacen_Rutas & r);
+std::istream & operator>>(std::istream & is, Almacen_Rutas & almacen);
 /**
  * @brief operador de salida de datos
  * @param os el flujo hacia donde se transfieren los datos
- * @param r el objeto almacen ruta que se saca por el flujo
+ * @param  almacen objeto almacen ruta que se saca por el flujo
  * @return referencia a ostream
  */
-std::ostream & operator<<(std::ostream & os, const Almacen_Rutas & r);
+std::ostream & operator<<(std::ostream & os, const Almacen_Rutas & almacen);
 
 #endif /* Almacen_Rutas_H_ */ 
