@@ -60,7 +60,7 @@ public:
 	 * @param otro con el que se compara
 	 * @return true si son iguales, false en caso contrario
 	 */
-	bool operator==(const Punto & otro) { return x == otro.x && y == otro.y; };
+	bool operator==(const Punto & otro) const { return x == otro.x && y == otro.y; };
 	
 	friend std::ostream & operator<<(std::ostream &os, const Punto &p);
 	friend std::istream & operator>>(std::istream &is, Punto & p);
