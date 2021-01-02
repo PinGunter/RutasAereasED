@@ -1,6 +1,6 @@
 #ifndef __PAISES__
 #define __PAISES__
-#include "Pais.h"
+#include <Pais.h>
 #include <set>
 using namespace std;
 class Paises{

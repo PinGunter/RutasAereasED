@@ -1,6 +1,6 @@
 #ifndef __PAIS__
 #define __PAIS__
-#include "Punto.h"
+#include <punto.h>
 class Pais{
   private:
     Punto p;
