@@ -74,6 +74,13 @@ public:
 	bool operator==(const Almacen_Rutas & otra);
 	
 	/**
+	 * @brief metodo que devuelve la ruta con el nombre indicado
+	 * @param nombre_ruta el nombre de la ruta buscada
+	 * @return la ruta con ese nombre
+	 */
+	Ruta getRuta(std::string nombre_ruta);
+
+	/**
 	 * @brief clase iteradora para la clase Almacen_Rutas
 	 **/
 	class iterator{

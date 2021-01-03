@@ -149,7 +149,7 @@ int main(int argc, char * argv[]){
   cout<<"Dime el codigo de una ruta"<<endl;
   string a;
   cin>>a;
-  Ruta R=Ar.GetRuta(a);
+  Ruta R=Ar.getRuta(a);
   
   Ruta::iterator it,it_before;
   Paises::iterator ip_before =Pses.end();
@@ -169,12 +169,12 @@ int main(int argc, char * argv[]){
       i_ban.LeerImagen(n_com.c_str(),"");
       
 	cout<<(*ip).GetPais()<<" ";
-	int x =  (int) ((I.num_cols()/360.0) * (180 + pto.GetLongitud()));
-	int y =  (int) ((I.num_filas()/180.0) * (90 - pto.GetLatitud()));
+	int x =  (int) ((I.num_cols()/360.0) * (180 + pto.getLongitud()));
+	int y =  (int) ((I.num_filas()/180.0) * (90 - pto.getLatitud()));
 	if (ip_before!=Pses.end() ){
 	  
-	  int x_old =(int) ((I.num_cols()/360.0) * (180 + (*it_before).GetLongitud()));
-	  int y_old =  (int) ((I.num_filas()/180.0) * (90 -(*it_before).GetLatitud()));
+	  int x_old =(int) ((I.num_cols()/360.0) * (180 + (*it_before).getLongitud()));
+	  int y_old =  (int) ((I.num_filas()/180.0) * (90 -(*it_before).getLatitud()));
 	  
 	  Pintar(y_old-avion.num_filas()/2 ,y-avion.num_filas()/2, x_old-avion.num_cols()/2,x-avion.num_cols()/2,I,avion,50,50);
 	}

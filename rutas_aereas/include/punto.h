@@ -16,51 +16,53 @@ class Punto{
 
 private:
 
-	double x;	///< Coordenada x del punto
-	double y;	///< Coordenada y del punto
+	double latitud;	///< Coordenada x del punto
+	double longitud;	///< Coordenada y del punto
+	std::string comentario; ///< String con comentario
 	
 public:
 
 	/**
 	 * @brief Constructor
 	 */
-	Punto(): x(0), y(0){}
+	Punto(): latitud(0), longitud(0){}
 
 	/**
 	 * @brief Constructor con parametros
 	 * @param i Coordenada x del punto
 	 * @param j Coordenada y del punto
+	 * @param c Comentario del punto
 	 */
-	Punto(double i, double j) : x(i), y(j){}
+	Punto(double i, double j, std::string c="") : latitud(i), longitud(j), comentario(c){}
 
 	/**
 	 * @brief Consultor de la coordenada x del Punto
 	 */
-	inline double getLongitud() const {return x;};
+	inline double getLongitud() const {return longitud;};
 	
 	/**
 	 * @brief Consultor de la coordenada y del Punto
 	 */
-	inline double getLatitud() const {return y;};
+	inline double getLatitud() const {return latitud;};
 
 	/**
 	 * @brief metodo para establecer la longitud
 	 * @param i la nueva longitud
 	 */
-	inline void setLongitud(double i) { x = i; }
+	inline void setLongitud(double i) { latitud = i; }
 
 	/**
 	 * @brief metodo para establecer la latitud
 	 * @param j la nueva latitud
 	 */
-	inline void setLatitud(double j) { y = j; }
+	inline void setLatitud(double j) { longitud = j; }
 
 	/**
 	 * @brief operador de igualdad
 	 * @param otro con el que se compara
 	 * @return true si son iguales, false en caso contrario
 	 */
-	bool operator==(const Punto & otro) const { return x == otro.x && y == otro.y; };
+	bool operator==(const Punto & otro) const { return latitud == otro.latitud && longitud == otro.longitud; };
 	
 	friend std::ostream & operator<<(std::ostream &os, const Punto &p);
 	friend std::istream & operator>>(std::istream &is, Punto & p);

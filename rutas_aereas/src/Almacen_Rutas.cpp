@@ -49,6 +49,15 @@ bool Almacen_Rutas::operator==(const Almacen_Rutas & otra){
     return iguales;
 } 
 
+Ruta Almacen_Rutas::getRuta(string nombre_ruta){
+    iterator posicion(buscarRuta(nombre_ruta));
+    if (posicion != end()){
+        return (*posicion);
+    } else{
+        return Ruta();
+    }
+}
+
 Almacen_Rutas::iterator::iterator(const vector<Ruta>::iterator & vit){
     it = vit;
 }
