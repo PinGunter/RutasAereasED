@@ -157,7 +157,7 @@ public:
 	};
 
 	/**
-	 * @brief clase iteradora constante para la clase Ruta
+	 * @brief clase iteradora constante para la clase Almacen_Rutas
 	 **/
 	class const_iterator{
 
