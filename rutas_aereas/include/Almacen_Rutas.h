@@ -1,6 +1,8 @@
 /**
   * @file Almacen_Rutas.h
   * @brief Fichero cabecera para la clase Almacen_Rutas
+  * @author Abel Ríos Gonzáles
+  * @author Salvador Romero Cortés
   */
 
 #ifndef _Almacen_Rutas_H_

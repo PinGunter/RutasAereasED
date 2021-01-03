@@ -1,6 +1,8 @@
 /**
   * @file ruta.h
   * @brief Fichero cabecera para la clase Ruta
+  * @author Abel Ríos Gonzáles
+  * @author Salvador Romero Cortés
   */
 
 #ifndef _RUTA_H_
