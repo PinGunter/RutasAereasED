@@ -31,7 +31,7 @@ $(OBJ)/imagenES.o:
 
 # ************ Generación de documentación ******************
 documentacion:
-	doxygen Doxyfile
+	doxygen doc/doxys/Doxyfile
 
 
 # ************ Limpieza ************
