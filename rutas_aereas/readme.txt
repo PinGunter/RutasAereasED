@@ -1,0 +1,2 @@
+- La única modificación que hemos hecho a los ficheros incluidos es en la llamada a "getLatitud()" y "getLongitud()" del fichero rutas_aereas.cpp. Originalmente se llaman como "GetLatitud()" y "GetLongitud()". Nosotros hemos cambiado la primera letra a minúscula.
+- El archivo que comprueba los métodos de cada clase es test.cpp. Se pude compilar usando make test
