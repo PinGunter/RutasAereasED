@@ -148,6 +148,7 @@ istream & operator>>(istream & is, Almacen_Rutas & almacen){
         if (is){
             almacen.insertarRuta(aux);
         }
+        aux.vaciar();
 	}
 
 	return is;

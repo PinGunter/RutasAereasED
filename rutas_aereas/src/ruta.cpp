@@ -62,6 +62,10 @@ bool Ruta::operator==(const std::string & nombre_ruta){
     return this->nombre == nombre_ruta;
 }
 
+void Ruta::vaciar(){
+    ruta.clear();
+    nombre = "";
+}
 
 Ruta::iterator::iterator(const vector<Punto>::iterator & vit){
     it = vit;

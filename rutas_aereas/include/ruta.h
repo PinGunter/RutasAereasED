@@ -104,6 +104,11 @@ public:
 	bool operator==(const std::string & nombre_ruta);
 
 	/**
+	 * @brief metodo para vaciar la ruta
+	 */
+	void vaciar();
+
+	/**
 	 * @brief clase iteradora para la clase Ruta
 	 **/
 	class iterator{	
